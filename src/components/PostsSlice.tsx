@@ -21,6 +21,16 @@ export const postsSlice = createSlice({
     addPost: (state, action: PayloadAction<Post>) => {
 		state.posts.push(action.payload)
     },
+	editPost: (state, action: PayloadAction<Post>) => {
+		console.log('action.payload.id',action.payload.id)
+		state.posts = state.posts.filter(post => post.id !== action.payload.id)
+		console.log(state.posts);
+		state.posts.push(action.payload)
+    },
+	// getByID: (state, action: PayloadAction<string>): Post[] => {
+	// 	const post = state.posts.filter(post => post.id === action.payload);
+	// 	return post
+	// },
     deletePost: (state, action: PayloadAction<string>) => {
       state.posts = state.posts.filter(post => post.id !== action.payload)
     }
@@ -28,6 +38,6 @@ export const postsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addPost, deletePost } = postsSlice.actions
+export const { addPost, deletePost, editPost } = postsSlice.actions
 
 export default postsSlice.reducer

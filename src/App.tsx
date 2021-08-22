@@ -1,12 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Router, Route, Link, Switch } from "react-router-dom";
 import AddPost from "./components/AddPost";
+import history from "./components/history";
 import PostList from "./components/PostList";
 
 function App() {
   return (
     <div>
-      <Router>
+      <Router history={history}>
         <div>
           <ul>
             <li>
@@ -22,7 +22,7 @@ function App() {
               <PostList />
             </Route>
             <Route path="/add-post">
-              <AddPost />
+              <AddPost/>
             </Route>
           </Switch>
         </div>
